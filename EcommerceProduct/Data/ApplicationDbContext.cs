@@ -13,5 +13,8 @@ namespace EcommerceProduct.Data
         public DbSet<Brand> Brand { get; set; }
         public DbSet<Currency> Currency { get; set; }
         public DbSet<Category> Category { get; set; }
+        public DbSet<ExchangeRate> ExchangeRate { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<ProductImage> ProductImage { get; set; }
     }
 }
