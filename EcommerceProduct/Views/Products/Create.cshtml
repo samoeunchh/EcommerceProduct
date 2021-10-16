@@ -10,54 +10,68 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ShortDesciption" class="control-label"></label>
-                <input asp-for="ShortDesciption" class="form-control" />
-                <span asp-validation-for="ShortDesciption" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LongDesciption" class="control-label"></label>
-                <input asp-for="LongDesciption" class="form-control" />
-                <span asp-validation-for="LongDesciption" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="CurrencyId" class="control-label"></label>
-                <select asp-for="CurrencyId" class ="form-control" asp-items="ViewBag.CurrencyId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="BrandId" class="control-label"></label>
-                <select asp-for="BrandId" class ="form-control" asp-items="ViewBag.BrandId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Code" class="control-label"></label>
-                <input asp-for="Code" class="form-control" />
-                <span asp-validation-for="Code" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="View" class="control-label"></label>
-                <input asp-for="View" class="form-control" />
-                <span asp-validation-for="View" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="QtyOnhand" class="control-label"></label>
-                <input asp-for="QtyOnhand" class="form-control" />
-                <span asp-validation-for="QtyOnhand" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="BrandId" class="control-label"></label>
+            <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryId" class="control-label"></label>
+            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="ShortDesciption" class="control-label"></label>
+            <textarea asp-for="ShortDesciption" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="ShortDesciption" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LongDesciption" class="control-label"></label>
+            <textarea asp-for="LongDesciption" class="form-control" rows="5"></textarea>
+            <span asp-validation-for="LongDesciption" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price" class="control-label"></label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CurrencyId" class="control-label"></label>
+            <select asp-for="CurrencyId" class="form-control" asp-items="ViewBag.CurrencyId"></select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Code" class="control-label"></label>
+            <input asp-for="Code" class="form-control" />
+            <span asp-validation-for="Code" class="text-danger"></span>
+        </div>
+       
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="View" class="control-label"></label>
+            <input asp-for="View" class="form-control" />
+            <span asp-validation-for="View" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="QtyOnhand" class="control-label"></label>
+            <input asp-for="QtyOnhand" class="form-control" />
+            <span asp-validation-for="QtyOnhand" class="text-danger"></span>
+        </div>
+        <table class="table table-bordered" id="t1">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th><button id="addImage"><i class="fa fa-plus"></i></button></th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -67,4 +81,27 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    $(document).ready(function(){
+        $("#addImage").click(function () {
+            var row = "<tr><td><input type='file' onChange='Test();'/></td>";
+            row += "<td><button class='btn btn-danger'><i class='fa trash'></i></button></td></tr>";
+            $("#t1").append(row);
+        });
+    });
+    function Test() {
+        console.log("testing");
+    }
+    toBase64 = function (file, callBack) {
+        file = file.files[0];
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            callBack(file, reader.result);
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
+</script>
 }
