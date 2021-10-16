@@ -47,7 +47,7 @@
         </div>
        
         <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-primary" />
+            <input id="save" value="Create" class="btn btn-primary" />
         </div>
     </div>
     <div class="col-md-4">
@@ -82,15 +82,26 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 <script>
+    var uploadFile = [];
+    var i = 0;
     $(document).ready(function(){
         $("#addImage").click(function () {
-            var row = "<tr><td><input type='file' onChange='Test();'/></td>";
-            row += "<td><button class='btn btn-danger'><i class='fa trash'></i></button></td></tr>";
+            var row = "<tr><td><input name='myFile[]' type='file' onChange='AddToBase("+ i +");'/></td>";
+            row += "<td><button class='btn btn-danger'><i class='fa fa-trash'></i></button></td></tr>";
             $("#t1").append(row);
+            i++;
+        });
+        $("#save").click(function () {
+            console.log(uploadFile);
         });
     });
-    function Test() {
-        console.log("testing");
+    function AddToBase(i) {
+        var file = document.getElementsByName("myFile[]")[i];
+        //console.log(file);
+        toBase64(file, function (file, base64) {
+            console.log(base64);
+            uploadFile.push(base64);
+        });
     }
     toBase64 = function (file, callBack) {
         file = file.files[0];
