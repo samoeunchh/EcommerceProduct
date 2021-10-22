@@ -10,6 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+        @Html.AntiForgeryToken()
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="BrandId" class="control-label"></label>
@@ -47,7 +48,9 @@
         </div>
        
         <div class="form-group">
-            <input id="save" value="Create" class="btn btn-primary" />
+            <button id="save" class="btn btn-primary">
+                <i class="fa fa-save"></i> Save
+            </button>
         </div>
     </div>
     <div class="col-md-4">
@@ -92,15 +95,47 @@
             i++;
         });
         $("#save").click(function () {
-            console.log(uploadFile);
+            //console.log(uploadFile);
+            var token = $("[name='__RequestVerificationToken']").val();
+            var d = {
+                __RequestVerificationToken: token,
+                "BrandId": $("#BrandId").val(),
+                "CategoryId": $("#CategoryId").val(),
+                "ShortDesciption": $("#ShortDesciption").val(),
+                "LongDesciption": $("#LongDesciption").val(),
+                "Price": $("#Price").val(),
+                "CurrencyId": $("#CurrencyId").val(),
+                "Code": $("#Code").val(),
+                "View": $("#View").val(),
+                "QtyOnhand": $("#QtyOnhand").val(),
+                "ProductImages": uploadFile,
+            };
+             $.ajax({
+                    type: "POST",
+                    dataType: "Html",
+                    enctype : "multipart/form-data",
+                    url: '@Url.Action("Create", "Products")',
+                    data: d,
+                    success: function (data) {
+                        console.log(data);
+                        //$("#LoadingImage").hide();
+                        alert("Record added successfully.");
+                        window.location.replace('@Url.Action("Index", "Products")');
+                    },
+                    error: function (error) {
+                        alert("Error : " + error);
+                        console.log(error);
+                        //$("#LoadingImage").hide();
+                    }
+                });
         });
     });
     function AddToBase(i) {
         var file = document.getElementsByName("myFile[]")[i];
         //console.log(file);
         toBase64(file, function (file, base64) {
-            console.log(base64);
-            uploadFile.push(base64);
+            //console.log(base64);
+            uploadFile.push({ Image: base64 });
         });
     }
     toBase64 = function (file, callBack) {

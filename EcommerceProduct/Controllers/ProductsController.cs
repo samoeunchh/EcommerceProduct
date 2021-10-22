@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EcommerceProduct.Data;
 using EcommerceProduct.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace EcommerceProduct.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _webhost;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context,IWebHostEnvironment webhost)
         {
             _context = context;
+            _webhost = webhost;
         }
 
         // GET: Products
@@ -61,11 +65,45 @@ namespace EcommerceProduct.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,ShortDesciption,LongDesciption,Price,CategoryId,CurrencyId,BrandId,Code,View,QtyOnhand")] Product product)
+        public async Task<IActionResult> Create(Product product)
         {
             if (ModelState.IsValid)
             {
-                product.ProductId = Guid.NewGuid();
+                string folderName = "Upload/";
+                string webRootPath = _webhost.WebRootPath;
+                string newPath = Path.Combine(webRootPath, folderName);
+                var pid = Guid.NewGuid();
+                if (!Directory.Exists(newPath))
+                {
+                    Directory.CreateDirectory(newPath);
+                }
+                if(product.ProductImages != null)
+                {
+                    for (var i = 0; i < product.ProductImages.Count; i++)
+                    {
+                        var did = Guid.NewGuid();
+                        product.ProductImages[i].ProductImageId = did;
+                        product.ProductImages[i].ProductId = pid;
+                        if (!string.IsNullOrEmpty(product.ProductImages[i].Image))
+                        {
+                            var file = product.ProductImages[i].Image.Split(",");
+                            var myFile = did + "." + GetFileExtension(file[0]);
+                            var filePath = Path.Combine(newPath, myFile);
+                            var bytes = Convert.FromBase64String(file[1]);
+                            if (bytes.Length > 0)
+                            {
+                                using (var stream = new FileStream(filePath, FileMode.Create))
+                                {
+                                    stream.Write(bytes, 0, bytes.Length);
+                                    stream.Flush();
+                                }
+                            }
+                            var path = folderName + myFile;
+                            product.ProductImages[i].Image = path;
+                        }
+                    }
+                }
+                product.ProductId = pid;
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -75,7 +113,12 @@ namespace EcommerceProduct.Controllers
             ViewData["CurrencyId"] = new SelectList(_context.Currency, "CurrencyId", "CategoryName", product.CurrencyId);
             return View(product);
         }
-
+        private string GetFileExtension(string str)
+        {
+            var my = str.Split("/");
+            var final = my[1].Split(";");
+            return final[0];
+        }
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
