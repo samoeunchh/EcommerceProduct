@@ -69,3 +69,53 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+.vertical-wrapper {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+}
+.container-megamenu.vertical .vertical-wrapper .megamenu-pattern {
+    position: relative;
+    z-index: 1;
+}
+@media (min-width: 992px) {
+    .container-megamenu.vertical .vertical-wrapper ul.megamenu {
+        box-shadow: 0 0 6px 0 rgb(0 0 0 / 15%);
+        background-color: #fff;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+        .container-megamenu.vertical .vertical-wrapper ul.megamenu > li > a {
+            color: #666;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            padding: 9px 0;
+            line-height: 22px;
+            position: relative;
+            text-transform: capitalize;
+            background: none;
+            height: auto;
+        }
+}
+.megamenu-style-dev .vertical ul.megamenu {
+    position: absolute;
+    width: 100%;
+    background: #222;
+    z-index: 99;
+}
+
+ul.megamenu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+}
+.vertical ul.megamenu > li > a {
+    color: #556270;
+    text-shadow: none;
+    background: none !important;
+    height: auto !important;
+    margin: 0 1px;
+}
+

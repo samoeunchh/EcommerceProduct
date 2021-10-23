@@ -1,4 +1,5 @@
-﻿using EcommerceProduct.Models;
+﻿using EcommerceProduct.Data;
+using EcommerceProduct.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -6,23 +7,26 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceProduct.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,ApplicationDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ViewData["Category"] =await _context.Category.ToListAsync();
+           return View(await _context.Product.ToListAsync());
         }
-
         public IActionResult Privacy()
         {
             return View();
