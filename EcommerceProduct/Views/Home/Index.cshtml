@@ -1,29 +1,4 @@
-﻿@model IEnumerable<EcommerceProduct.Models.Product>
-@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@{ 
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-2 col-md-3 col-sm-3">
-            <div class="vertical-wrapper">
-                <div class="megamenu-pattern">
-                    <ul class="megamenu" data-transition="slide" data-animationtime="300">
-                        @foreach (var item in ViewData["Category"] as IEnumerable<EcommerceProduct.Models.Category>)
-                        {
-                            <li class="item-vertical style1 with-sub-menu hover">
-                                <a href="#" class="clearfix"><strong><i class="fa fa-plug"></i> @item.CategoryName</strong></a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-10 col-md-9 col-sm-9">
-            @foreach (var item in Model)
-            {
-                <h1>@item.ShortDesciption</h1>
-            }
-        </div>
-    </div>
-</div>
+    Layout = "~/Views/Shared/_FrontLayout.cshtml";
+}
