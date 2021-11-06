@@ -1,4 +1,949 @@
-﻿@{ 
-
+﻿@model IEnumerable<EcommerceProduct.Models.Product>
+@{
+    ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_FrontLayout.cshtml";
 }
+
+@*<div class="container">
+    <div class="row">
+        <div class="col-lg-2 col-md-3 col-sm-3">
+            <div class="vertical-wrapper">
+                <div class="megamenu-pattern">
+                    <ul class="megamenu" data-transition="slide" data-animationtime="300">
+                        @foreach (var item in ViewData["Category"] as IEnumerable<EcommerceProduct.Models.Category>)
+                        {
+                            <li class="item-vertical style1 with-sub-menu hover">
+                                <a href="#" class="clearfix"><strong><i class="fa fa-plug"></i> @item.CategoryName</strong></a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10 col-md-9 col-sm-9">
+            @foreach (var item in Model)
+            {
+                <h1>@item.ShortDesciption</h1>
+            }
+        </div>
+    </div>
+</div>*@
+<div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 col_tojp  main-right">
+    <div class="row row_3kdz  row-style ">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hbs4 col-style">
+            <div class="module so-listing-tabs-ltr listingtab-layout1">
+                <h3 class="modtitle">
+                    <a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=custom/featured"><span>Trending items</span></a>
+                </h3>
+                <div class="modcontent">
+                    <div id="so_listing_tabs_69" class="so-listing-tabs first-load module">
+                        <div class="ltabs-wrap ">
+                            <div class="ltabs-tabs-container" data-delay="500" data-duration="800" data-effect="none" data-ajaxurl="https://opencart.opencartworks.com/themes/so_emarket/" data-type_source="0" data-type_show="slider">
+                                <div class="ltabs-tabs-wrap">
+                                    <span class="ltabs-tab-selected">
+                                        All
+                                    </span>
+                                    <span class="ltabs-tab-arrow">▼</span>
+                                    <ul class="ltabs-tabs cf list-sub-cat font-title">
+
+                                        <li class="ltabs-tab   tab-sel tab-loaded  tab-all" data-category-id="*" data-active-content-l=".items-category-all">
+                                            <span class="ltabs-tab-label">
+                                                All
+                                            </span>
+                                        </li>
+                                        <li class="ltabs-tab  " data-category-id="67" data-active-content-l=".items-category-67">
+                                            <span class="ltabs-tab-label">
+                                                Bathroom
+                                            </span>
+                                        </li>
+                                        <li class="ltabs-tab  " data-category-id="68" data-active-content-l=".items-category-68">
+                                            <span class="ltabs-tab-label">
+                                                Bedroom
+                                            </span>
+                                        </li>
+                                        <li class="ltabs-tab  " data-category-id="27" data-active-content-l=".items-category-27">
+                                            <span class="ltabs-tab-label">
+                                                Decor
+                                            </span>
+                                        </li>
+                                        <li class="ltabs-tab  " data-category-id="65" data-active-content-l=".items-category-65">
+                                            <span class="ltabs-tab-label">
+                                                Furniture
+                                            </span>
+                                        </li>
+                                        <li class="ltabs-tab  " data-category-id="26" data-active-content-l=".items-category-26">
+                                            <span class="ltabs-tab-label">
+                                                Living room
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="wap-listing-tabs products-list grid">
+                                <div class="ltabs-items-container">
+                                    <div class="products-list ltabs-items  ltabs-items-selected ltabs-items-loaded items-category-all" data-total="16">
+                                        <div class="ltabs-items-inner owl2-carousel  ltabs-slider owl2-theme owl2-loaded">
+                                            <div class="owl2-stage-outer">
+                                                <div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1586.4px;">
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <div class="owl2-item active" style="width: 264.4px; margin-right: 0px;">
+
+                                                            <div class="ltabs-item ">
+                                                                <div class="item-inner product-layout transition product-grid">
+                                                                    <div class="product-item-container">
+                                                                        <div class="left-block">
+                                                                            <div class="product-image-container  second_img 	">
+                                                                                <a href="#" target="_self" title="@item.ShortDesciption">
+                                                                                    <img data-sizes="auto" src="" class="img-1 lazyautosizes lazyloaded" alt="Sausage cowbee" sizes="234px">
+                                                                                    <img data-sizes="auto" src="" class="img-2 lazyautosizes lazyloaded" alt="Sausage cowbee" sizes="235px">
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="box-label">
+                                                                            </div>
+                                                                            <div class="button-group so-quickview cartinfo--left">
+                                                                                <button class="addToCart btn-button" type="button" title="Add to cart" style="cursor: default; background-color: #eee; color: #ccc;"><i class="fa fa-shopping-basket"></i><span>Add to cart</span></button>
+                                                                                <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick=""><i class="fa fa-heart"></i><span>Add to Wish List</span></button>
+                                                                                <button type="button" class="compare btn-button" title="Compare this Product " onclick=""><i class="fa fa-refresh"></i><span>Compare this Product</span></button>
+                                                                                <a class="hidden" data-product="74" href="" target="_self"></a>
+                                                                                <a class="visible-lg btn-button quickview quickview_handler" href="" title="Quick view" data-title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="right-block">
+
+                                                                            <div class="caption">
+                                                                                <h4><a href="#" title="Sausage cowbee" target="_self">@item.ShortDesciption</a></h4>
+
+                                                                                <div class="rating">
+                                                                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                                </div>
+
+                                                                                <div class="price">
+
+                                                                                    <a data-fancybox="" data-type="ajax" data-src="" href="javascript:;" class="callforprice" style="color: #ff0000; font-weight: bold;"><i class="fa fa-phone"></i> Call for Price</a>
+
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <!--<div class="item-inner product-layout transition product-grid">
+                    <div class="product-item-container">
+                        <div class="left-block">
+                            <div class="product-image-container  second_img 	">
+                                <a href="#" target="_self" title="Pastrami bacon">
+                                    <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="" class="img-1 lazyload" alt="Pastrami bacon">
+                                    <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="" class="img-2 lazyload" alt="Pastrami bacon">
+
+                                </a>
+                            </div>
+
+                            <div class="box-label">
+                            </div>
+                            <div class="button-group so-quickview cartinfo--left">
+                                <button type="button" class="addToCart btn-button" title="Add to cart" onclick=""><i class="fa fa-shopping-basket"></i><span>Add to cart </span></button>
+                                <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick=""><i class="fa fa-heart"></i><span>Add to Wish List</span></button>
+                                <button type="button" class="compare btn-button" title="Compare this Product " onclick=""><i class="fa fa-refresh"></i><span>Compare this Product</span></button>
+                                <a class="hidden" data-product="60" href="#" target="_self"></a>
+
+                                <a class="visible-lg btn-button quickview quickview_handler" href="#" title="Quick view" data-title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
+                            </div>
+
+                        </div>-->
+                                                                @*<div class="right-block">
+
+                        <div class="caption">
+                            <h4><a href="#" title="Pastrami bacon" target="_self">Pastrami bacon</a></h4>
+
+                            <div class="rating">
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                            </div>
+
+                            <div class="price">
+
+                                $42.00
+
+                            </div>
+                        </div>
+
+                    </div>*@
+
+                                                                <!--</div>
+                </div>-->
+                                                            </div>
+                                                      
+
+                                                        </div>
+                                                    }
+                                                        @*<div class="owl2-item active" style="width: 264.4px; margin-right: 0px;">
+                <div class="ltabs-item ">
+
+                    <div class="item-inner product-layout transition product-grid">
+
+                        <div class="product-item-container">
+                            <div class="left-block">
+
+                                <div class="product-image-container  second_img 	">
+                                    <a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=58" target="_self" title="Kielbasa hamburg">
+
+                                        <img data-sizes="auto" src="./Index_files/10-270x270.jpg" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/10-270x270.jpg" class="img-1 lazyautosizes lazyloaded" alt="Kielbasa hamburg" sizes="234px">
+                                        <img data-sizes="auto" src="./Index_files/16-270x270.jpg" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/16-270x270.jpg" class="img-2 lazyautosizes lazyloaded" alt="Kielbasa hamburg" sizes="235px">
+
+                                    </a>
+                                </div>
+
+                                <div class="box-label">
+                                </div>
+
+
+                                <div class="button-group so-quickview cartinfo--left">
+
+
+                                    <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add(&#39;58 &#39;);"><i class="fa fa-shopping-basket"></i><span>Add to cart </span></button>
+
+
+
+                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add(&#39;58&#39;);"><i class="fa fa-heart"></i><span>Add to Wish List</span></button>
+
+
+                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add(&#39;58&#39;);"><i class="fa fa-refresh"></i><span>Compare this Product</span></button>
+
+
+                                    <a class="hidden" data-product="58" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=58" target="_self"></a>
+
+                                    <a class="visible-lg btn-button quickview quickview_handler" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=extension/soconfig/quickview&amp;product_id=58" title="Quick view" data-title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
+                                </div>
+
+                            </div>
+                            <div class="right-block">
+
+                                <div class="caption">
+                                    <h4><a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=58" title="Kielbasa hamburg" target="_self">Kielbasa hamburg</a></h4>
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    </div>
+
+                                    <div class="price">
+
+                                        $55.00
+
+                                    </div>
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="item-inner product-layout transition product-grid">
+
+                        <div class="product-item-container">
+                            <div class="left-block">
+
+                                <div class="product-image-container  second_img 	">
+                                    <a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=55" target="_self" title="Proident leerkas">
+
+                                        <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/13-270x270.jpg" class="img-1 lazyload" alt="Proident leerkas">
+                                        <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/5-270x270.jpg" class="img-2 lazyload" alt="Proident leerkas">
+
+                                    </a>
+                                </div>
+
+                                <div class="box-label">
+                                </div>
+
+
+                                <div class="button-group so-quickview cartinfo--left">
+
+
+                                    <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add(&#39;55 &#39;);"><i class="fa fa-shopping-basket"></i><span>Add to cart </span></button>
+
+
+
+                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add(&#39;55&#39;);"><i class="fa fa-heart"></i><span>Add to Wish List</span></button>
+
+
+                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add(&#39;55&#39;);"><i class="fa fa-refresh"></i><span>Compare this Product</span></button>
+
+
+                                    <a class="hidden" data-product="55" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=55" target="_self"></a>
+
+                                    <a class="visible-lg btn-button quickview quickview_handler" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=extension/soconfig/quickview&amp;product_id=55" title="Quick view" data-title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
+                                </div>
+
+                            </div>
+                            <div class="right-block">
+
+                                <div class="caption">
+                                    <h4><a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=55" title="Proident leerkas" target="_self">Proident leerkas</a></h4>
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    </div>
+
+                                    <div class="price">
+
+                                        $55.00
+
+                                    </div>
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div><div class="owl2-item active" style="width: 264.4px; margin-right: 0px;">
+                <div class="ltabs-item ">
+
+                    <div class="item-inner product-layout transition product-grid">
+
+                        <div class="product-item-container">
+                            <div class="left-block">
+
+                                <div class="product-image-container  second_img 	">
+                                    <a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=73" target="_self" title="Chicken swinesha">
+
+                                        <img data-sizes="auto" src="./Index_files/20-270x270.jpg" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/20-270x270.jpg" class="img-1 lazyautosizes lazyloaded" alt="Chicken swinesha" sizes="234px">
+                                        <img data-sizes="auto" src="./Index_files/10-270x270.jpg" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/10-270x270.jpg" class="img-2 lazyautosizes lazyloaded" alt="Chicken swinesha" sizes="235px">
+
+                                    </a>
+                                </div>
+
+                                <div class="box-label">
+                                </div>
+
+
+                                <div class="button-group so-quickview cartinfo--left">
+
+
+                                    <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add(&#39;73 &#39;);"><i class="fa fa-shopping-basket"></i><span>Add to cart </span></button>
+
+
+
+                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add(&#39;73&#39;);"><i class="fa fa-heart"></i><span>Add to Wish List</span></button>
+
+
+                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add(&#39;73&#39;);"><i class="fa fa-refresh"></i><span>Compare this Product</span></button>
+
+
+                                    <a class="hidden" data-product="73" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=73" target="_self"></a>
+
+                                    <a class="visible-lg btn-button quickview quickview_handler" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=extension/soconfig/quickview&amp;product_id=73" title="Quick view" data-title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
+                                </div>
+
+                            </div>
+                            <div class="right-block">
+
+                                <div class="caption">
+                                    <h4><a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=73" title="Chicken swinesha" target="_self">Chicken swinesha</a></h4>
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    </div>
+
+                                    <div class="price">
+
+                                        $56.00
+
+                                    </div>
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="item-inner product-layout transition product-grid">
+
+                        <div class="product-item-container">
+                            <div class="left-block">
+
+                                <div class="product-image-container  second_img 	">
+                                    <a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=71" target="_self" title="Consecte quichuck">
+
+                                        <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/15-270x270.jpg" class="img-1 lazyload" alt="Consecte quichuck">
+                                        <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/4-270x270.jpg" class="img-2 lazyload" alt="Consecte quichuck">
+
+                                    </a>
+                                </div>
+
+                                <div class="box-label">
+                                </div>
+
+
+                                <div class="button-group so-quickview cartinfo--left">
+
+
+                                    <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add(&#39;71 &#39;);"><i class="fa fa-shopping-basket"></i><span>Add to cart </span></button>
+
+
+
+                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add(&#39;71&#39;);"><i class="fa fa-heart"></i><span>Add to Wish List</span></button>
+
+
+                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add(&#39;71&#39;);"><i class="fa fa-refresh"></i><span>Compare this Product</span></button>
+
+
+                                    <a class="hidden" data-product="71" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=71" target="_self"></a>
+
+                                    <a class="visible-lg btn-button quickview quickview_handler" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=extension/soconfig/quickview&amp;product_id=71" title="Quick view" data-title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
+                                </div>
+
+                            </div>
+                            <div class="right-block">
+
+                                <div class="caption">
+                                    <h4><a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=71" title="Consecte quichuck" target="_self">Consecte quichuck</a></h4>
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    </div>
+
+                                    <div class="price">
+
+                                        $61.00
+
+                                    </div>
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div><div class="owl2-item active" style="width: 264.4px; margin-right: 0px;">
+                <div class="ltabs-item ">
+
+                    <div class="item-inner product-layout transition product-grid">
+
+                        <div class="product-item-container">
+                            <div class="left-block">
+
+                                <div class="product-image-container  second_img 	">
+                                    <a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=77" target="_self" title="Cenison meatloa">
+
+                                        <img data-sizes="auto" src="./Index_files/3-270x270.jpg" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/3-270x270.jpg" class="img-1 lazyautosizes lazyloaded" alt="Cenison meatloa" sizes="234px">
+                                        <img data-sizes="auto" src="./Index_files/16-270x270.jpg" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/16-270x270.jpg" class="img-2 lazyautosizes lazyloaded" alt="Cenison meatloa" sizes="235px">
+
+                                    </a>
+                                </div>
+
+                                <div class="box-label">
+                                </div>
+
+
+                                <div class="button-group so-quickview cartinfo--left">
+
+
+                                    <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add(&#39;77 &#39;);"><i class="fa fa-shopping-basket"></i><span>Add to cart </span></button>
+
+
+
+                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add(&#39;77&#39;);"><i class="fa fa-heart"></i><span>Add to Wish List</span></button>
+
+
+                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add(&#39;77&#39;);"><i class="fa fa-refresh"></i><span>Compare this Product</span></button>
+
+
+                                    <a class="hidden" data-product="77" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=77" target="_self"></a>
+
+                                    <a class="visible-lg btn-button quickview quickview_handler" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=extension/soconfig/quickview&amp;product_id=77" title="Quick view" data-title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
+                                </div>
+
+                            </div>
+                            <div class="right-block">
+
+                                <div class="caption">
+                                    <h4><a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=77" title="Cenison meatloa" target="_self">Cenison meatloa</a></h4>
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    </div>
+
+                                    <div class="price">
+
+                                        $62.00
+
+                                    </div>
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="item-inner product-layout transition product-grid">
+
+                        <div class="product-item-container">
+                            <div class="left-block">
+
+                                <div class="product-image-container  second_img 	">
+                                    <a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=80" target="_self" title="Balltip nullaelit">
+
+                                        <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/9-270x270.jpg" class="img-1 lazyload" alt="Balltip nullaelit">
+                                        <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/18-270x270.jpg" class="img-2 lazyload" alt="Balltip nullaelit">
+
+                                    </a>
+                                </div>
+
+                                <div class="box-label">
+                                    <span class="label-product label-sale"> -15% </span>
+                                </div>
+
+
+                                <div class="button-group so-quickview cartinfo--left">
+
+
+                                    <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add(&#39;80 &#39;);"><i class="fa fa-shopping-basket"></i><span>Add to cart </span></button>
+
+
+
+                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add(&#39;80&#39;);"><i class="fa fa-heart"></i><span>Add to Wish List</span></button>
+
+
+                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add(&#39;80&#39;);"><i class="fa fa-refresh"></i><span>Compare this Product</span></button>
+
+
+                                    <a class="hidden" data-product="80" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=80" target="_self"></a>
+
+                                    <a class="visible-lg btn-button quickview quickview_handler" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=extension/soconfig/quickview&amp;product_id=80" title="Quick view" data-title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
+                                </div>
+
+                            </div>
+                            <div class="right-block">
+
+                                <div class="caption">
+                                    <h4><a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=80" title="Balltip nullaelit" target="_self">Balltip nullaelit</a></h4>
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    </div>
+
+                                    <div class="price">
+                                        <span class="price-new">$55.00</span>
+                                        <span class="price-old">$65.00</span>
+                                    </div>
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div><div class="owl2-item active" style="width: 264.4px; margin-right: 0px;">
+                <div class="ltabs-item ">
+
+                    <div class="item-inner product-layout transition product-grid">
+
+                        <div class="product-item-container">
+                            <div class="left-block">
+
+                                <div class="product-image-container  second_img 	">
+                                    <a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=59" target="_self" title="Drumstick tempor">
+
+                                        <img data-sizes="auto" src="./Index_files/18-270x270.jpg" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/18-270x270.jpg" class="img-1 lazyautosizes lazyloaded" alt="Drumstick tempor" sizes="234px">
+                                        <img data-sizes="auto" src="./Index_files/15-270x270.jpg" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/15-270x270.jpg" class="img-2 lazyautosizes lazyloaded" alt="Drumstick tempor" sizes="235px">
+
+                                    </a>
+                                </div>
+
+                                <div class="box-label">
+                                </div>
+
+
+                                <div class="button-group so-quickview cartinfo--left">
+
+
+                                    <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add(&#39;59 &#39;);"><i class="fa fa-shopping-basket"></i><span>Add to cart </span></button>
+
+
+
+                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add(&#39;59&#39;);"><i class="fa fa-heart"></i><span>Add to Wish List</span></button>
+
+
+                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add(&#39;59&#39;);"><i class="fa fa-refresh"></i><span>Compare this Product</span></button>
+
+
+                                    <a class="hidden" data-product="59" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=59" target="_self"></a>
+
+                                    <a class="visible-lg btn-button quickview quickview_handler" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=extension/soconfig/quickview&amp;product_id=59" title="Quick view" data-title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
+                                </div>
+
+                            </div>
+                            <div class="right-block">
+
+                                <div class="caption">
+                                    <h4><a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=59" title="Drumstick tempor" target="_self">Drumstick tempor</a></h4>
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    </div>
+
+                                    <div class="price">
+
+                                        $70.00
+
+                                    </div>
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="item-inner product-layout transition product-grid">
+
+                        <div class="product-item-container">
+                            <div class="left-block">
+
+                                <div class="product-image-container  second_img 	">
+                                    <a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=70" target="_self" title="Neatball bresaola">
+
+                                        <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/16-270x270.jpg" class="img-1 lazyload" alt="Neatball bresaola">
+                                        <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/14-270x270.jpg" class="img-2 lazyload" alt="Neatball bresaola">
+
+                                    </a>
+                                </div>
+
+                                <div class="box-label">
+                                </div>
+
+
+                                <div class="button-group so-quickview cartinfo--left">
+
+
+                                    <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add(&#39;70 &#39;);"><i class="fa fa-shopping-basket"></i><span>Add to cart </span></button>
+
+
+
+                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add(&#39;70&#39;);"><i class="fa fa-heart"></i><span>Add to Wish List</span></button>
+
+
+                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add(&#39;70&#39;);"><i class="fa fa-refresh"></i><span>Compare this Product</span></button>
+
+
+                                    <a class="hidden" data-product="70" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=70" target="_self"></a>
+
+                                    <a class="visible-lg btn-button quickview quickview_handler" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=extension/soconfig/quickview&amp;product_id=70" title="Quick view" data-title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
+                                </div>
+
+                            </div>
+                            <div class="right-block">
+
+                                <div class="caption">
+                                    <h4><a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=70" title="Neatball bresaola" target="_self">Neatball bresaola</a></h4>
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    </div>
+
+                                    <div class="price">
+
+                                        $71.00
+
+                                    </div>
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div><div class="owl2-item" style="width: 264.4px; margin-right: 0px;">
+                <div class="ltabs-item ">
+
+                    <div class="item-inner product-layout transition product-grid">
+
+                        <div class="product-item-container">
+                            <div class="left-block">
+
+                                <div class="product-image-container  second_img 	">
+                                    <a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=56" target="_self" title="Ribeye hamhock">
+
+                                        <img data-sizes="auto" src="./Index_files/14-270x270.jpg" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/14-270x270.jpg" class="img-1 lazyautosizes lazyloaded" alt="Ribeye hamhock" sizes="234px">
+                                        <img data-sizes="auto" src="./Index_files/2-270x270.jpg" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/2-270x270.jpg" class="img-2 lazyautosizes lazyloaded" alt="Ribeye hamhock" sizes="235px">
+
+                                    </a>
+                                </div>
+
+                                <div class="box-label">
+                                </div>
+
+
+                                <div class="button-group so-quickview cartinfo--left">
+
+
+                                    <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add(&#39;56 &#39;);"><i class="fa fa-shopping-basket"></i><span>Add to cart </span></button>
+
+
+
+                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add(&#39;56&#39;);"><i class="fa fa-heart"></i><span>Add to Wish List</span></button>
+
+
+                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add(&#39;56&#39;);"><i class="fa fa-refresh"></i><span>Compare this Product</span></button>
+
+
+                                    <a class="hidden" data-product="56" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=56" target="_self"></a>
+
+                                    <a class="visible-lg btn-button quickview quickview_handler" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=extension/soconfig/quickview&amp;product_id=56" title="Quick view" data-title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
+                                </div>
+
+                            </div>
+                            <div class="right-block">
+
+                                <div class="caption">
+                                    <h4><a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=56" title="Ribeye hamhock" target="_self">Ribeye hamhock</a></h4>
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    </div>
+
+                                    <div class="price">
+
+                                        $71.00
+
+                                    </div>
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="item-inner product-layout transition product-grid">
+
+                        <div class="product-item-container">
+                            <div class="left-block">
+
+                                <div class="product-image-container  second_img 	">
+                                    <a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=76" target="_self" title="Mandouille short">
+
+                                        <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/5-270x270.jpg" class="img-1 lazyload" alt="Mandouille short">
+                                        <img data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://opencart.opencartworks.com/themes/so_emarket/image/cache/catalog/demo/product/funiture/4-270x270.jpg" class="img-2 lazyload" alt="Mandouille short">
+
+                                    </a>
+                                </div>
+
+                                <div class="box-label">
+                                </div>
+
+
+                                <div class="button-group so-quickview cartinfo--left">
+
+
+                                    <button type="button" class="addToCart btn-button" title="Add to cart" onclick="cart.add(&#39;76 &#39;);"><i class="fa fa-shopping-basket"></i><span>Add to cart </span></button>
+
+
+
+                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add(&#39;76&#39;);"><i class="fa fa-heart"></i><span>Add to Wish List</span></button>
+
+
+                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add(&#39;76&#39;);"><i class="fa fa-refresh"></i><span>Compare this Product</span></button>
+
+
+                                    <a class="hidden" data-product="76" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=76" target="_self"></a>
+
+                                    <a class="visible-lg btn-button quickview quickview_handler" href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=extension/soconfig/quickview&amp;product_id=76" title="Quick view" data-title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
+                                </div>
+
+                            </div>
+                            <div class="right-block">
+
+                                <div class="caption">
+                                    <h4><a href="https://opencart.opencartworks.com/themes/so_emarket/index.php?route=product/product&amp;product_id=76" title="Mandouille short" target="_self">Mandouille short</a></h4>
+
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                    </div>
+
+                                    <div class="price">
+
+                                        $76.00
+
+                                    </div>
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+                                                    </div>
+                                            </div><div class="owl2-controls"><div class="owl2-nav"><div class="owl2-prev" style=""></div><div class="owl2-next" style=""></div></div><div class="owl2-dots" style="display: none;"></div></div>
+                                        </div>
+                                    </div>
+                                    <div class="products-list ltabs-items  items-category-67" data-total="13">
+                                        <div class="ltabs-loading"></div>
+
+                                    </div>
+                                    <div class="products-list ltabs-items  items-category-68" data-total="12">
+                                        <div class="ltabs-loading"></div>
+
+                                    </div>
+                                    <div class="products-list ltabs-items  items-category-27" data-total="12">
+                                        <div class="ltabs-loading"></div>
+
+                                    </div>
+                                    <div class="products-list ltabs-items  items-category-65" data-total="10">
+                                        <div class="ltabs-loading"></div>
+
+                                    </div>
+                                    <div class="products-list ltabs-items  items-category-26" data-total="12">
+                                        <div class="ltabs-loading"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_0g2s col-style">
+            <div class="banners banners7">
+                <div class="row">
+                    <div class="banner1 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="b1">
+                            <a href="https://opencart.opencartworks.com/themes/so_emarket/#"><img src="./Index_files/banner8.jpg" alt="image"></a>
+                        </div>
+                        <div class="b2">
+                            <a href="https://opencart.opencartworks.com/themes/so_emarket/#"><img src="./Index_files/banner9.jpg" alt="image"></a>
+                        </div>
+                    </div>
+                    <div class="banner2 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <a href="https://opencart.opencartworks.com/themes/so_emarket/#"><img src="./Index_files/banner10.jpg" alt="image"></a>
+                    </div>
+                    <div class="banner3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="b1">
+                            <a href="https://opencart.opencartworks.com/themes/so_emarket/#"><img src="./Index_files/banner11.jpg" alt="image"></a>
+                        </div>
+                        <div class="b2">
+                            <a href="https://opencart.opencartworks.com/themes/so_emarket/#"><img src="./Index_files/banner12.jpg" alt="image"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
