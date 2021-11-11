@@ -8,7 +8,10 @@
 
 <p>
     <a asp-action="Create">Create New</a>
+   
 </p>
+<p> <span class="item_cart" onclick="ShowItem();"></span></p>
+<p><button class="btn btn-danger" onclick="ClearLocalStorage()">Remove</button></p>
 <table class="table">
     <thead>
         <tr>
@@ -43,41 +46,84 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShortDesciption)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LongDesciption)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.View)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QtyOnhand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand.BrandName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Currency.CategoryName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDesciption)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LongDesciption)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.View)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QtyOnhand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand.BrandName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Currency.CategoryName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                    <a class="btn btn-default">
+                    <i class="fa fa-cart-plus" onclick="addProduct('@item.ProductId','@item.ShortDesciption')"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@section Scripts{
+   
+    <script>
+        var count = 1;
+        var productId = 1;
+        $(document).ready(function () {
+            $(".item_cart").text(0);
+            if (localStorage.getItem('products')) {
+                var product = JSON.parse(localStorage.getItem('products'));
+                $(".item_cart").text(product.length);
+            }
+        });
+        function addProduct(productId, name) {
+            console.log(count);
+            $(".item_cart").text(count);
+            let products = [];
+            if (localStorage.getItem('products')) {
+                products = JSON.parse(localStorage.getItem('products'));
+            }
+            products.push({ 'productId': productId, name: name});
+            localStorage.setItem('products', JSON.stringify(products));
+            count++;
+        }
+        function removeProduct(productId) {
+            let storageProducts = JSON.parse(localStorage.getItem('products'));
+            let products = storageProducts.filter(product => product.productId !== productId);
+            localStorage.setItem('products', JSON.stringify(products));
+        }
+        function ClearLocalStorage() {
+            localStorage.clear();
+        }
+        function ShowItem() {
+            let storageProducts = JSON.parse(localStorage.getItem('products'));
+            console.log(storageProducts);
+            for (var i = 0; i < storageProducts.length; i++) {
+                console.log(storageProducts[i].productId);
+            }
+        }
+    </script>
+}
+
