@@ -62,6 +62,7 @@
                                                 <div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1586.4px;">
                                                     @foreach (var item in Model)
                                                     {
+                       
                                                         <div class="owl2-item active" style="width: 264.4px; margin-right: 0px;">
 
                                                             <div class="ltabs-item ">
@@ -82,7 +83,7 @@
                                                                                 <i class="fa fa-shopping-basket"></i><span>Add to cart</span></button>
                                                                                 <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="">
                                                                                 <i class="fa fa-heart"></i><span>Add to Wish List</span></button>
-                                                                                <button type="button" class="compare btn-button" title="Add to cart" onclick="addProduct();">
+                                                                                <button type="button" class="compare btn-button" title="Add to cart" onclick="addProduct('@item.ProductId', '@item.ShortDesciption',@item.Price);">
                                                                                 <i class="fa fa-refresh"></i><span>Add to Cart</span></button>
                                                                                 <a class="hidden" data-product="74" href="" target="_self"></a>
                                                                                 <a class="visible-lg btn-button quickview quickview_handler" href="" title="Quick view" data-title="Quick view" data-fancybox-type="iframe">
@@ -92,7 +93,7 @@
                                                                         <div class="right-block">
 
                                                                             <div class="caption">
-                                                                                <h4><a href="#" title="Sausage cowbee" target="_self">@item.ShortDesciption</a></h4>
+                                                                                <h4><a href="#" title="Sausage cowbee" target="_self">@item.ShortDesciption - @item.Price</a></h4>
 
                                                                                 <div class="rating">
                                                                                     <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
@@ -149,10 +150,35 @@
         </div>
 </div>
     <script>
-        function addProduct() {
-            $("#item_cart").text(1);
+        var i = 0;
+        $(document).ready(function () {
+            //localStorage.clear();
+            $("#item_cart").text(i);
+            if (localStorage.getItem('products')) {
+                var product = JSON.parse(localStorage.getItem('products'));
+                i = product.length;
+                $("#item_cart").text(i);
+                var table = "<li class='content-item'><table class='table table-striped' style='margin-bottom:10px;'>";
+                $.each(product, function (i, v) {
+                    console.log(v);
+                    table += "<tr><td>" + v.name + "</td><td>" + v.price + "</td><tr>";
+                });
+                table += "</table></li>";
+                $(".shoppingcart-box").append(table);
+            }
+        });
+        function addProduct(productId, name,price) {
+            i++;
+            console.log(i);
+            $("#item_cart").text(i);
+            let products = [];
+            if (localStorage.getItem('products')) {
+                products = JSON.parse(localStorage.getItem('products'));
+            }
+            products.push({ 'productId': productId, name: name,price: price });
+            localStorage.setItem('products', JSON.stringify(products));
             var table = "<li class='content-item'><table class='table table-striped' style='margin-bottom:10px;'>";
-            table += "<tr><td>Coke</td><td>1$</td><tr></table></li>";
+            table += "<tr><td>"+ name +"</td><td>"+ price +" $</td><tr></table></li>";
             $(".shoppingcart-box").append(table);
         }
     </script>
