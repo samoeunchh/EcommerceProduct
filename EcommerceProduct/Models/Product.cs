@@ -14,7 +14,7 @@ namespace EcommerceProduct.Models
         public string ShortDesciption { get; set; }
         [MaxLength(500)]
         public string LongDesciption { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         [ForeignKey("Category")]
         public Guid CategoryId { get; set; }
         [ForeignKey("Currency")]

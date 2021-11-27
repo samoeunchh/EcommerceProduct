@@ -15,7 +15,7 @@ namespace EcommerceProduct.Models
         [DataType(DataType.Date)]
         public DateTime IssueDate { get; set; }
         [Required]
-        public decimal Rate { get; set; }
+        public double Rate { get; set; }
         public Currency Currency { get; set; }
     }
 }

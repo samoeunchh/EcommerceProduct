@@ -155,13 +155,14 @@
             //localStorage.clear();
             $("#item_cart").text(i);
             if (localStorage.getItem('products')) {
+                $(".empty").remove();
                 var product = JSON.parse(localStorage.getItem('products'));
                 i = product.length;
                 $("#item_cart").text(i);
                 var table = "<li class='content-item'><table class='table table-striped' style='margin-bottom:10px;'>";
                 $.each(product, function (i, v) {
                     console.log(v);
-                    table += "<tr><td>" + v.name + "</td><td>" + v.price + "</td><tr>";
+                    table += "<tr><td>" + v.name + "</td><td>" + v.price + "$</td><tr>";
                 });
                 table += "</table></li>";
                 $(".shoppingcart-box").append(table);
