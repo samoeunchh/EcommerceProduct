@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_FrontLayout.cshtml";
+}
+<div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 col_tojp  main-right">
+    <table class="table table-bordered" id="t1">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Unit Price</th>
+                <th>Qty</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <p>
+        Total Price: <span id="total"></span>
+    </p>
+</div>
+
+<script>
+    var i = 0;
+    $(document).ready(function () {
+        //localStorage.clear();
+        
+        if (localStorage.getItem('products')) {
+            var product = JSON.parse(localStorage.getItem('products'));
+            $("#item_cart").text(product.length);
+            var table = "";
+            $.each(product, function (i, v) {
+                var productid = "'" + v.productId + "'";
+                table += "<tr><td>" + v.name + "</td><td>" + v.price + "</td>";
+                table += '<td><input type="number" class="form-control qty" value="1" name="qty[]"/></td><td>' + v.price + '</td><td><button class="btn btn-danger" onClick="removeProduct(' + productid + ','+ (i + 1) +')">';
+                table += "<i class='fa fa-trash'></i></button></td></tr>";
+            });
+            $("#t1").append(table);
+        }
+    });
+    function removeProduct(productId,i) {
+        let storageProducts = JSON.parse(localStorage.getItem('products'));
+        let products = storageProducts.filter(product => product.productId !== productId);
+        localStorage.setItem('products', JSON.stringify(products));
+        $("#item_cart").text(products.length);
+        $("#t1 tr:eq(" + i + ")").remove();
+    }
+    $(document).on("change", ".qty", function () {
+        var total = 0;
+        $('#t1 > tbody > tr').each(function (i) {
+            console.log(i);
+            var price = $(this).find("td:eq(1)").html();
+            var qty = document.getElementsByName("qty[]")[i].value;
+            $(this).find("td:eq(3)").html(price * qty);
+            total += price * qty;
+        });
+        $("#total").text(total);
+    });
+</script>

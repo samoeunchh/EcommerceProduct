@@ -7,11 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="eMarket with multi-homepages will bring an awesome experience for any customer on OpenCart 3. It not only includes many powerful features, but also support multi- vendor plugin.">
     <meta name="keywords" content="ecommerce, fashion, marketplace, modern, multi vendor, multipurpose, page builder, shop, shopping, store, vendor, opencart theme, opencart3, opencart 3 theme"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-    <link rel="stylesheet" href="~/css/f83f575fd4a8ccf6520a02d44f6c5c89.css"/>
+    <link rel="stylesheet" href="~/css/f83f575fd4a8ccf6520a02d44f6c5c89.css" />
     <link rel="stylesheet" href="~/css/ratchet-add.css">
-   <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <link href="https://opencart.opencartworks.com/themes/so_emarket/" rel="canonical">
     <link href="https://opencart.opencartworks.com/themes/so_emarket/image/catalog/favicon.png" rel="icon">
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <script src="~/lib/font-awesome/js/all.min.js"></script>
+    <script type="text/javascript">function GottoPay() {
+            window.location.href = '/Home/Payment';
+        }</script>
 </head>
 <body class="common-home ltr layout-1 so-demos-ready loaded">
     <div id="wrapper" class="wrapper-fluid banners-effect-7">
@@ -1660,7 +1665,7 @@
 
                                     <a data-loading-text="Loading... " class="btn-group top_cart dropdown-toggle" data-toggle="dropdown">
                                         <div class="shopcart">
-                                            <span class="icon-c">
+                                            <span class="icon-c" onclick="GottoPay();">
                                                 <i class="fa fa-shopping-bag"></i>
                                             </span>
                                             <div class="shopcart-inner">
